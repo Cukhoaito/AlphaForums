@@ -1,0 +1,19 @@
+/* _content/AlphaForums/Views/Shared/_Layout.cshtml.rz.scp.css */
+.navbar[b-rtp7z198tm] {
+    box-shadow: 0 5px 4px -6px #000;
+    margin-bottom: 0;
+}
+
+.navbar li[b-rtp7z198tm] {
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+}
+
+.navbar-logo[b-rtp7z198tm] {
+    width: 120px;
+}
+/* _content/AlphaForums/Views/Shared/_LoginPartial.cshtml.rz.scp.css */
+.navbar li[b-uvaswippb9] {
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+}

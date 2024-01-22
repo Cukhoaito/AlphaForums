@@ -1,0 +1,12 @@
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\bin\Debug\net7.0\AlphaForums.Data.deps.json
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\bin\Debug\net7.0\AlphaForums.Data.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\bin\Debug\net7.0\AlphaForums.Data.pdb
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.csproj.AssemblyReference.cache
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.AssemblyInfoInputs.cache
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.AssemblyInfo.cs
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.csproj.CoreCompileInputs.cache
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\refint\AlphaForums.Data.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.pdb
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\ref\AlphaForums.Data.dll

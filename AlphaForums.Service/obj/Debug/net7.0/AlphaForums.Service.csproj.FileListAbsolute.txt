@@ -1,0 +1,15 @@
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\bin\Debug\net7.0\AlphaForums.Service.deps.json
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\bin\Debug\net7.0\AlphaForums.Service.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\bin\Debug\net7.0\AlphaForums.Service.pdb
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\bin\Debug\net7.0\AlphaForums.Data.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\bin\Debug\net7.0\AlphaForums.Data.pdb
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.csproj.AssemblyReference.cache
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.AssemblyInfoInputs.cache
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.AssemblyInfo.cs
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.csproj.CoreCompileInputs.cache
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.csproj.CopyComplete
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\refint\AlphaForums.Service.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.pdb
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\ref\AlphaForums.Service.dll

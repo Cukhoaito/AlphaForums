@@ -1,0 +1,57 @@
+﻿@model AlphaForums.Models.HomeViewModels.HomeIndexModel
+
+<div class="container body-content">
+    <div class="row frontPageSplash">
+        <div class="col-xl-6 frontPageLearn">
+            
+            <div class="frontPageHeading">Learn, Collaborate, Share Knowledge</div>
+            <p class="frontPageSubHeading">Alpha Forums is the world's fastest growing coding forums</p>
+            <div>
+                <form asp-controller="Home" asp-action="Search" method="POST">
+                    <input name="query" type="text" class="homeSearch" placeholder="Search..."/>
+                </form>
+            </div>
+        </div>
+        <div class="col-xl-6"></div>
+    </div>
+    <div class="row frontPageContent">
+        <h3 id="lastPosts">Last Posts</h3>
+        <table class="table table-hover" id="lastPostsTable">
+            <tbody>
+            @foreach (var post in Model.LastPosts)
+            {
+                <tr>
+                    <td>
+                        <div class="forumLogo"
+                             style="background-image: url('@post.Forum.ImageUrl');">
+                        </div>
+                        <div class="postTitle">
+                            <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                @post.Title
+                            </a>
+                        </div>
+                        <div class="postSubTitle">
+                            @if (post.RepliesCount == 1)
+                            {
+                                <span>@post.RepliesCount Reply</span>
+                            }
+                            @if (post.RepliesCount == 0)
+                            {
+                                <span>No Replies</span>
+                            }
+                            @if (post.RepliesCount > 1){
+                                <span>@post.RepliesCount Replies</span>
+                            }
+                            <span class="postUser">
+                                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
+                                    @post.AuthorName
+                                </a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

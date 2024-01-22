@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaForums", "AlphaForums\AlphaForums.csproj", "{AB964266-C2ED-4EA2-B5E2-B49AADAD6B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaForums.Data", "AlphaForums.Data\AlphaForums.Data.csproj", "{C853F215-F88B-467A-9B7A-42BEA94774C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaForums.Service", "AlphaForums.Service\AlphaForums.Service.csproj", "{1756E3AB-C898-4168-96B6-9ED20A27B374}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB964266-C2ED-4EA2-B5E2-B49AADAD6B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB964266-C2ED-4EA2-B5E2-B49AADAD6B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB964266-C2ED-4EA2-B5E2-B49AADAD6B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB964266-C2ED-4EA2-B5E2-B49AADAD6B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C853F215-F88B-467A-9B7A-42BEA94774C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C853F215-F88B-467A-9B7A-42BEA94774C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C853F215-F88B-467A-9B7A-42BEA94774C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C853F215-F88B-467A-9B7A-42BEA94774C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1756E3AB-C898-4168-96B6-9ED20A27B374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1756E3AB-C898-4168-96B6-9ED20A27B374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1756E3AB-C898-4168-96B6-9ED20A27B374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1756E3AB-C898-4168-96B6-9ED20A27B374}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
