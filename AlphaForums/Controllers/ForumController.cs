@@ -44,7 +44,8 @@ public class ForumController : Controller
         var model = new ForumTopicModel
         {
             Posts = postListings,
-            Forum = BuildForumListing(forum)
+            Forum = BuildForumListing(forum),
+            SearchQuery = query
         };
 
         return View(model);

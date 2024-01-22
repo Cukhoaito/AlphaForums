@@ -13,3 +13,4 @@ C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net
 C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\refint\AlphaForums.Service.dll
 C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.pdb
 C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\ref\AlphaForums.Service.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Service\obj\Debug\net7.0\AlphaForums.Service.sourcelink.json

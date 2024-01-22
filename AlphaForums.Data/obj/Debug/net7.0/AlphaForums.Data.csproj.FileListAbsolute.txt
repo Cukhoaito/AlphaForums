@@ -10,3 +10,4 @@ C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0
 C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\refint\AlphaForums.Data.dll
 C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.pdb
 C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\ref\AlphaForums.Data.dll
+C:\Users\Bac\Documents\NetProjects\AlphaForums\AlphaForums.Data\obj\Debug\net7.0\AlphaForums.Data.sourcelink.json

@@ -35,12 +35,22 @@ public class PostService : IPost
 
     public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
     {
-       
         return string.IsNullOrEmpty(searchQuery)
             ? forum.Posts
             : forum.Posts.Where(post
                 => post.Title.ToLower().Contains(searchQuery.ToLower())
-                   || post.Content.ToLower().Contains(searchQuery.ToLower()));
+                   || post.Content.ToLower().Contains(searchQuery.ToLower())
+            );
+    }
+
+    public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+    {
+        return string.IsNullOrEmpty(searchQuery)
+            ? new List<Post>()
+            : GetAll().Where(post
+                => post.Title.ToLower().Contains(searchQuery.ToLower())
+                   || post.Content.ToLower().Contains(searchQuery.ToLower())
+            );
     }
 
     public IEnumerable<Post> GetLastPosts(int num)

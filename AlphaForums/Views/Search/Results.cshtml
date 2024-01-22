@@ -1,47 +1,22 @@
-@model AlphaForums.Models.ForumViewModels.ForumTopicModel
+@model AlphaForums.Models.SearchViewModels.SearchResultModel
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <span>@Model.Forum.Name Forum</span>
+        <span>Search Results for: @Model.SearchQuery</span>
         <div class="sectionHeading">
-            @if (Context.User.Identity?.IsAuthenticated == true)
-            {
-                <span id="headingBtn">
-                    <a asp-controller="Post"
-                       asp-action="Create"
-                       asp-route-id="@Model.Forum.Id"
-                       class="btn btn-newPost">
-                        Create Post
-                    </a>
-                </span>
-            }
-            <form asp-controller="Forum" asp-action="Search" method="POST">
+
+            <form asp-controller="Search" asp-action="Search" method="POST">
                 <div class="searchForm">
-                    <input name="query" type="text" 
-                           placeholder="Search..." class="searchBar" 
+                    <input name="query" type="text"
+                           placeholder="Search..." class="searchBar"
                            value="@Model.SearchQuery"/>
-                    <button type="submit" class="btn btn-search text-center">
-                        <i class="material-icons po">search</i>
+                    <button type="submit" class="btn btn-search">
+                        <i class="material-icons">search</i>
                     </button>
                 </div>
-                <input asp-for="Forum.Id" name="id" type="hidden"/>
             </form>
         </div>
-        <div class="sectionDescription">
-            <div class="forumLogo" style="background-image: url('@Model.Forum.ImageUrl')"></div>
-            <p>Welcome to the @Model.Forum.Name forum. Please keep posts friendly and on-topic.</p>
-            @if (User.Identity?.IsAuthenticated == false)
-            {
-                <p>
-                    <span>
-                        You must be a
-                        <a asp-area="Identity" asp-page="/Account/Register">registered member</a>
-                        to create a new post.
-                    </span>
-                </p>
-            }
-            
-        </div>
+
     </div>
     <div class="row forumIndexContent">
         @if (Model.Posts.Any())
@@ -52,18 +27,22 @@
                 {
                     <tr>
                         <td>
+                            <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id">
+                                <div class="forumLogo" style="background-image: url('@post.Forum.ImageUrl')"></div>
+                            </a>
                             <div class="postData">
                                 <div class="postTitle">
                                     <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">@post.Title</a>
                                 </div>
-                                <div class="forumSubTitle">
+                                <div class="postSubTitle">
                                     <div>
                                         <span class="postAuthor">
                                             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
                                                 @post.AuthorName
                                             </a>
+                                            (@post.AuthorRating)
                                         </span>
-                                        (@post.AuthorRating) 
+
                                     </div>
                                 </div>
                             </div>
@@ -83,18 +62,12 @@
         }
         else
         {
-            <div class="noPosts">
+            <div class="noPosts text-center">
                 <i class="material-icons md-72">question_answer</i>
             </div>
             <h5>
-                Is looks like there are no posts to be found.
-                Why not
-                <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
-                    <span>Post</span>
-                </a>
-                Something?
+                No search results found for @Model.SearchQuery <br/>
             </h5>
         }
-        </div>
+    </div>
 </div>
-

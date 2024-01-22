@@ -21,7 +21,7 @@ public class HomeController : Controller
         _postService = postService;
         
     }
-
+    [HttpGet]
     public IActionResult Index()
     {
         var model = BuilderHomeIndexModel();
@@ -46,13 +46,6 @@ public class HomeController : Controller
         {
             LastPosts = posts
         };
-    }
-    
-    [HttpPost]
-    private IActionResult Search(string query)
-    {
-        
-        return RedirectToAction("Index");
     }
 
     private ForumListingModel GetForumListingForPost(Post post)
