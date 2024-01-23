@@ -9,22 +9,24 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
-        options.SignIn.RequireConfirmedAccount = false)
+builder.Services
+    .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IForum, ForumService>();
 builder.Services.AddScoped<IPost, PostService>();
-
+builder.Services.AddScoped<IApplicationUser, ApplicationUserService>();
+builder.Services.AddScoped<IUpload, UploadService>();
+builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -52,5 +54,11 @@ app.MapControllerRoute(
 );
 
 app.MapRazorPages();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dataSeeder = services.GetRequiredService<DataSeeder>();
+    dataSeeder.SeedSuperUser().GetAwaiter();
+}
 
 app.Run();

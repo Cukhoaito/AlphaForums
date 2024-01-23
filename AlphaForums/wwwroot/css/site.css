@@ -275,7 +275,7 @@ body {
 .btn-search{
     background: none !important;
     border: none; 
-    /*padding: 0 !important;*/
+    display: inline-flex;
     font: inherit;
 }
 
@@ -344,6 +344,29 @@ body {
     font-family: 'Roboto Mono', sans-serif;
 }
 
+/*User Profile*/
+.userProfile{
+    padding: 32px 0 64px 24px;
+    background-color: #fff;
+}
+#userEmailLabel,
+#userBioLabel,
+#userCreateLabel,
+#userRating,
+#userActionLabel{
+    display: block;
+    color: #444;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 3px;
+}
+
+#userName{
+    display: block;
+    color: #444;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
 .createPostSection {
     background-color: #fff;
     padding: 24px;
@@ -358,11 +381,12 @@ body {
     width: 30%;
     transition: ease .3s;
     border: none;
+    color: #EEE;
 }
 .searchBar:focus{
     color: black;
     width: 60%;
-    background-color: #fff;
+    background-color: #EEE;
     border: none;
     outline: none;
 }

@@ -11,7 +11,6 @@
     <title>@ViewData["Title"] - AlphaForums</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="AlphaForums.styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono">
 </head>
@@ -34,6 +33,7 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Forum" asp-action="Index">Forum</a>
                     </li>
+
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li class="nav-item dropdown">
@@ -47,7 +47,10 @@
                                 <li class="dropdown-header">Profile</li>
                                 <li role="separator" class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item" asp-controller="Profile" asp-action="Detail">My Profile</a>
+                                    <a class="dropdown-item" asp-controller="Profile"
+                                       asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">
+                                        My Profile
+                                    </a>
                                 </li>
                                 @if (User.IsInRole("Admin"))
                                 {
