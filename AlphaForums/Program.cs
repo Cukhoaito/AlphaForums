@@ -20,7 +20,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 
 builder.Services.AddScoped<IForum, ForumService>();
 builder.Services.AddScoped<IPost, PostService>();
-
+builder.Services.AddScoped<IApplicationUser, ApplicationUserService>();
+builder.Services.AddScoped<IUpload, UploadService>();
 builder.Services.AddControllersWithViews();
 
 

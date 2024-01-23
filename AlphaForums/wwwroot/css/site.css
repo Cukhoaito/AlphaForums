@@ -275,7 +275,7 @@ body {
 .btn-search{
     background: none !important;
     border: none; 
-    /*padding: 0 !important;*/
+    display: inline-flex;
     font: inherit;
 }
 
@@ -358,11 +358,12 @@ body {
     width: 30%;
     transition: ease .3s;
     border: none;
+    color: #EEE;
 }
 .searchBar:focus{
     color: black;
     width: 60%;
-    background-color: #fff;
+    background-color: #EEE;
     border: none;
     outline: none;
 }
