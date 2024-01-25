@@ -33,7 +33,6 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Forum" asp-action="Index">Forum</a>
                     </li>
-
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li class="nav-item dropdown">
@@ -47,10 +46,7 @@
                                 <li class="dropdown-header">Profile</li>
                                 <li role="separator" class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item" asp-controller="Profile"
-                                       asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">
-                                        My Profile
-                                    </a>
+                                    <a class="dropdown-item" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a>
                                 </li>
                                 @if (User.IsInRole("Admin"))
                                 {
