@@ -21,10 +21,10 @@ public class ApplicationUserService : IApplicationUser
         return _context.ApplicationUsers;
     }
 
-    public async Task SetProfileImage(string id, Uri uri)
+    public async Task SetProfileImage(string id, string url)
     {
         var user = GetById(id);
-        user.ProfileImageUrl = uri.AbsoluteUri;
+        user.ProfileImageUrl = url;
         _context.Update(user);
         await _context.SaveChangesAsync();
     }

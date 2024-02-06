@@ -367,6 +367,14 @@ body {
     font-size: 24px;
 }
 
+#userProfileImage{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #ddd;
+    background-size: 100%;
+}
+
 .createPostSection {
     background-color: #fff;
     padding: 24px;

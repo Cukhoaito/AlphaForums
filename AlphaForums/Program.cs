@@ -20,15 +20,11 @@ builder.Services
 builder.Services.AddScoped<IForum, ForumService>();
 builder.Services.AddScoped<IPost, PostService>();
 builder.Services.AddScoped<IApplicationUser, ApplicationUserService>();
-builder.Services.AddScoped<IUpload, UploadService>();
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddControllersWithViews();
 
-
 var app = builder.Build();
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -54,11 +50,11 @@ app.MapControllerRoute(
 );
 
 app.MapRazorPages();
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var dataSeeder = services.GetRequiredService<DataSeeder>();
-    dataSeeder.SeedSuperUser().GetAwaiter();
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var services = scope.ServiceProvider;
+//     var dataSeeder = services.GetRequiredService<DataSeeder>();
+//     dataSeeder.SeedSuperUser().GetAwaiter();
+// }
 
 app.Run();

@@ -10,14 +10,16 @@ public class ProfileController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IApplicationUser _userService;
-    private readonly IUpload _uploadService;
+    private readonly IWebHostEnvironment _webHost;
 
-    public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService,
-        IUpload uploadService)
+    public ProfileController(UserManager<ApplicationUser> userManager,
+        IApplicationUser userService,
+        IWebHostEnvironment webHost
+    )
     {
         _userManager = userManager;
         _userService = userService;
-        _uploadService = uploadService;
+        _webHost = webHost;
     }
 
     [HttpGet]
@@ -49,6 +51,21 @@ public class ProfileController : Controller
     public async Task<IActionResult> UploadProfileImage(IFormFile file)
     {
         var userId = _userManager.GetUserId(User);
-        return View("Error");
+        var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", "users");
+        if (!Directory.Exists(uploadsFolder))
+        {
+            Directory.CreateDirectory(uploadsFolder);
+        }
+        
+        var fileName = Path.GetFileName("user"+userId + ".png");
+        var fileSavePath = Path.Combine(uploadsFolder, fileName);
+        await using (var stream = new FileStream(fileSavePath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+            await _userService.SetProfileImage(userId, $"/images/users/{fileName}");
+        }
+        ViewBag.Message = fileName + " upload successfully";
+        
+        return RedirectToAction("Detail", "Profile", new { id = userId });
     }
 }

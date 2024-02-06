@@ -2,6 +2,7 @@
 @using AlphaForums.Data.Models
 @model AlphaForums.Models.ProfileViewModels.ProfileModel
 @inject UserManager<ApplicationUser> UserManager
+
 <div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">
@@ -11,7 +12,7 @@
     <div class="row userProfile">
         <div class="col-md-4">
             <div id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl)"></div>
-            @if (User.Identity?.Name == Model.UserName)
+            @if (UserManager.GetUserId(User) == Model.UserId)
             {
                 <form method="POST" enctype="multipart/form-data"
                       asp-controller="Profile" asp-action="UploadProfileImage">
