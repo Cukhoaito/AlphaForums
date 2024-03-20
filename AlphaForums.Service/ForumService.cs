@@ -32,19 +32,25 @@ public class ForumService : IForum
             .Include(forum => forum.Posts);
     }
 
-    public IEnumerable<ApplicationUser> GetAllActiveUsers()
-    {
-        throw new NotImplementedException();
-    }
+    
 
-    public Task Create(Forum forum)
+    public async Task Create(Forum forum)
     {
-        throw new NotImplementedException();
+        _context.Forums.Add(forum);
+        await _context.SaveChangesAsync();
     }
 
     public Task Delete(int forumId)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task UpdateForumImageUrl(int forumId, string url)
+    {
+        var forum = _context.Forums.First(f => f.Id == forumId);
+        if (forum == null) return;
+        forum.ImageUrl = url;
+        await _context.SaveChangesAsync();
     }
 
     public Task UpdateForumTitle(int forumId, string newTitle)
@@ -55,5 +61,13 @@ public class ForumService : IForum
     public Task UpdateForumDescription(int forumId, string newDescription)
     {
         throw new NotImplementedException();
+    }
+
+    public bool HasRecentPost(int forumId)
+    {
+        // const int hoursAgo = 12;
+        // var window = DateTime.Now.AddHours(-hoursAgo);
+        // return GetById(forumId).Posts.Any(post => post.Created > window);
+        return false;
     }
 }

@@ -15,6 +15,6 @@ public interface IPost
     Task Delete(int id);
     Task EditPostContent(int id, string newContent);
 
-    Task AddRely(PostReply reply);
+    Task AddReply(PostReply reply);
     IEnumerable<Post> GetPostsByForum(int id);
 }

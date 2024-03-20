@@ -33,6 +33,14 @@
       "PackagePath": "staticwebassets\\images\\forum\\dart.png"
     },
     {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Rust.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Rust.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Typescript.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Typescript.png"
+    },
+    {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\go.png",
       "PackagePath": "staticwebassets\\images\\forum\\go.png"
     },
@@ -81,12 +89,20 @@
       "PackagePath": "staticwebassets\\images\\theme\\front-splash.jpg"
     },
     {
-      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user0.png",
-      "PackagePath": "staticwebassets\\images\\users\\user0.png"
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\defaultAvatar.png",
+      "PackagePath": "staticwebassets\\images\\users\\defaultAvatar.png"
     },
     {
-      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\userd497022f-ab99-4db2-b33b-1c6e8db19ec3.png",
-      "PackagePath": "staticwebassets\\images\\users\\userd497022f-ab99-4db2-b33b-1c6e8db19ec3.png"
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user013300cb-1de5-48b5-bf67-a2561b250079.png",
+      "PackagePath": "staticwebassets\\images\\users\\user013300cb-1de5-48b5-bf67-a2561b250079.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png",
+      "PackagePath": "staticwebassets\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\usera2e52e51-e51e-472a-bd87-ac0a28a0f113.png",
+      "PackagePath": "staticwebassets\\images\\users\\usera2e52e51-e51e-472a-bd87-ac0a28a0f113.png"
     },
     {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\js\\site.js",

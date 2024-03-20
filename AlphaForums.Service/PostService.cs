@@ -74,9 +74,10 @@ public class PostService : IPost
         throw new NotImplementedException();
     }
 
-    public Task AddRely(PostReply reply)
+    public async Task AddReply(PostReply reply)
     {
-        throw new NotImplementedException();
+        _context.PostRelies.Add(reply);
+        await _context.SaveChangesAsync();
     }
 
     public IEnumerable<Post> GetPostsByForum(int id)

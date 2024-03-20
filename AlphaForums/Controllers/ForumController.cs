@@ -1,8 +1,10 @@
 using System.Globalization;
+using System.Text.RegularExpressions;
 using AlphaForums.Data;
 using AlphaForums.Data.Models;
 using AlphaForums.Models.ForumViewModels;
 using AlphaForums.Models.PostViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlphaForums.Controllers;
@@ -11,12 +13,14 @@ public class ForumController : Controller
 {
     private readonly IForum _forumService;
     private readonly IPost _postService;
+    private readonly IWebHostEnvironment _webHost;
 
 
-    public ForumController(IForum forumService, IPost postService)
+    public ForumController(IForum forumService, IPost postService, IWebHostEnvironment webHost)
     {
         _forumService = forumService;
         _postService = postService;
+        _webHost = webHost;
     }
 
     [HttpGet]
@@ -28,11 +32,46 @@ public class ForumController : Controller
 
         var model = new ForumIndexModel
         {
-            ForumList = forums
+            ForumList = forums.OrderBy(f => f.Name)
         };
 
         return View(model);
     }
+    [Authorize(Roles = "Admin")]
+    public IActionResult Create()
+    {
+        var model = new AddForumViewModel();
+        return View(model);
+    }
+
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> AddForum(AddForumViewModel model)
+    {
+        var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", "forum");
+        if (!Directory.Exists(uploadsFolder))
+        {
+            Directory.CreateDirectory(uploadsFolder);
+        }
+
+
+        var fileName = Path.GetFileName("forum_" + Regex.Replace(model.Title, @"\s+", "") + ".png");
+        var fileSavePath = Path.Combine(uploadsFolder, fileName);
+        await using (var stream = new FileStream(fileSavePath, FileMode.Create))
+        {
+            await model.File.CopyToAsync(stream);
+            await _forumService.Create(new Forum
+            {
+                Title = model.Title,
+                Description = model.Description,
+                Created = DateTime.Now,
+                ImageUrl = $"/images/forum/{fileName}"
+            });
+        }
+
+        return RedirectToAction("Index", "Forum");
+    }
+
 
     [HttpGet]
     public IActionResult Topic(int id, string query)
@@ -49,11 +88,6 @@ public class ForumController : Controller
         };
 
         return View(model);
-    }
-
-    public IActionResult Create()
-    {
-        throw new NotImplementedException();
     }
 
     [HttpPost]
@@ -83,7 +117,6 @@ public class ForumController : Controller
     private ForumListingModel BuildForumListing(Post post)
     {
         var forum = post.Forum;
-
         return BuildForumListing(forum);
     }
 
@@ -94,7 +127,9 @@ public class ForumController : Controller
             Id = forum.Id,
             Name = forum.Title,
             Description = forum.Description,
-            ImageUrl = forum.ImageUrl
+            ImageUrl = forum.ImageUrl,
+            NumberOfPosts = forum.Posts?.Count() ?? 0,
+            HasRecentPost = _forumService.HasRecentPost(forum.Id)
         };
     }
 }

@@ -1,11 +1,13 @@
 using AlphaForums.Data;
 using AlphaForums.Data.Models;
 using AlphaForums.Models.ProfileViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlphaForums.Controllers;
 
+[Authorize]
 public class ProfileController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;
@@ -44,12 +46,27 @@ public class ProfileController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        return View();
+        var profiles = _userService.GetAll()
+            .OrderByDescending(user => user.Rating).Select(u=> new ProfileModel
+            {
+                Email = u.Email,
+                UserName = u.UserName,
+                ProfileImageUrl = u.ProfileImageUrl,
+                UserRating = u.Rating.ToString(),
+                MemberSince = u.MemberSince
+            });
+
+        var model = new ProfileListingModel
+        {
+            Profiles = profiles
+        };
+        return View(model);
     }
 
     [HttpPost]
     public async Task<IActionResult> UploadProfileImage(IFormFile file)
     {
+        
         var userId = _userManager.GetUserId(User);
         var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", "users");
         if (!Directory.Exists(uploadsFolder))
@@ -64,7 +81,6 @@ public class ProfileController : Controller
             await file.CopyToAsync(stream);
             await _userService.SetProfileImage(userId, $"/images/users/{fileName}");
         }
-        ViewBag.Message = fileName + " upload successfully";
         
         return RedirectToAction("Detail", "Profile", new { id = userId });
     }

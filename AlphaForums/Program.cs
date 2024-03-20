@@ -50,11 +50,11 @@ app.MapControllerRoute(
 );
 
 app.MapRazorPages();
-// using (var scope = app.Services.CreateScope())
-// {
-//     var services = scope.ServiceProvider;
-//     var dataSeeder = services.GetRequiredService<DataSeeder>();
-//     dataSeeder.SeedSuperUser().GetAwaiter();
-// }
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dataSeeder = services.GetRequiredService<DataSeeder>();
+    dataSeeder.SeedSuperUser().GetAwaiter();
+}
 
 app.Run();

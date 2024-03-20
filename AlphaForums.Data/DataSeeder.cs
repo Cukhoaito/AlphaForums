@@ -21,8 +21,8 @@ public class DataSeeder
         var hasher = new PasswordHasher<ApplicationUser>();
         var user = new ApplicationUser
         {
-            UserName = "ForumAdmin",
-            NormalizedUserName = "forumadmin",
+            UserName = "Admin",
+            NormalizedUserName = "admin",
             Email = "admin@example.com",
             NormalizedEmail = "admin@example.com",
             EmailConfirmed = true,
@@ -33,14 +33,13 @@ public class DataSeeder
         var hashedPassword = hasher.HashPassword(user, "admin");
         user.PasswordHash = hashedPassword;
         
-
-        var hasAdminRole = _context.Roles.Any(r => r.Name == "Admin");
+        var hasAdminRole = _context.Roles.Any(r => r.Name == "Admin" || r.NormalizedName == "admin" );
 
         if (!hasAdminRole) 
         {
             await roleStore.CreateAsync(new IdentityRole
             {
-                Name = "Amin", 
+                Name = "Admin", 
                 NormalizedName = "admin"
             });
         }

@@ -4,7 +4,7 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <div class="container body-content">
-    <div class="row sectionHeader">
+    <div class="row sectionHeader text-bold">
         <div class="sectionHeading">
             User Profile
         </div>
@@ -17,7 +17,7 @@
                 <form method="POST" enctype="multipart/form-data"
                       asp-controller="Profile" asp-action="UploadProfileImage">
                     <div id="upload">
-                        <label class="btn btn-default btn-file">
+                        <label class="btn btn-default btn-file btn-browser">
                             Browse <input type="file" name="file" style="display: none"/>
                         </label>
                     </div>

@@ -3,7 +3,7 @@
 <div class="container body-content">
     <div class="row postHeader">
         <div class="postHeading">
-            <span class="postIndexTitle">
+            <span class="postIndexTitle text-bold">
                 @Model.Title
             </span>
             <span id="headingBtn">
@@ -18,14 +18,11 @@
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
             <div class="postAuthorImage" style="background-image: url('@Model.AuthorImageUrl')"></div>
-            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
+            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId" class="authorName">
                 @Model.AuthorName
             </a>
             <span class="postData">@Model.Created</span>
-            @if (Model.IsAuthorAdmin)
-            {
-                <span class="isAmin smaller"> Admin </span>
-            }
+            
 
         </div>
         <div class="col-md-9 postContentContainer">
@@ -39,7 +36,7 @@
     @if (User.Identity?.IsAuthenticated == true)
     {
         <div class="row">
-            <span>
+            <span class="replyBar">
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
                 </a>
@@ -54,19 +51,15 @@
             <div class="row replyContent">
                 <div class="col-md-3 replyAuthorContainer">
                     <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl)"></div>
-                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
+                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId" class="authorName">
                         @reply.AuthorName
                     </a>
-                    @if (reply.IsAuthorAdmin)
-                    {
-                        <div class="isAdmin smaller">Admin</div>
-                        <br/>
-                    }
-                    <span>@reply.Created</span>
+                    
+                    <span class="postData">@reply.Created</span>
                 </div>
                 <div class="col-md-9 replyContentContainer">
                     <div class="postContent">
-                        @Html.Raw(reply.RelyContent)
+                        @Html.Raw(reply.ReplyContent)
                     </div>
                 </div>
             </div>

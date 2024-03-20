@@ -1,6 +1,7 @@
 using AlphaForums.Data;
 using AlphaForums.Data.Models;
 using AlphaForums.Models.PostViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,13 +11,15 @@ public class PostController : Controller
 {
     private readonly IPost _postService;
     private readonly IForum _forumService;
+    private readonly IApplicationUser _userService;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager)
+    public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
     {
         _postService = postService;
         _forumService = forumService;
         _userManager = userManager;
+        _userService = userService;
     }
 
     [HttpGet]
@@ -44,6 +47,7 @@ public class PostController : Controller
 
 
     [HttpGet]
+    [Authorize]
     public IActionResult Create(int id)
     {
         var forum = _forumService.GetById(id);
@@ -58,12 +62,14 @@ public class PostController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> AddPost(NewPostModel model)
     {
         var user = await _userManager.GetUserAsync(User);
+        if (user == null) return View("Error");
         var post = BuildPost(model, user);
         await _postService.Add(post);
-        //TODO: Implement User Rating Management
+        await _userService.UpdateUserRating(user.Id,typeof(Post));
         return RedirectToAction("Index", "Post", new { post.Id });
     }
 
@@ -82,7 +88,7 @@ public class PostController : Controller
             AuthorImageUrl = r.User.ProfileImageUrl,
             AuthorRating = r.User.Rating,
             Created = r.Created,
-            RelyContent = r.Content,
+            ReplyContent = r.Content,
             IsAuthorAdmin = IsAuthorAdmin(r.User)
         });
     }

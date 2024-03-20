@@ -1,20 +1,40 @@
 @model AlphaForums.Models.ForumViewModels.ForumIndexModel
 
-<h1> Forums </h1>
-<table class="table table-hover" id="forumIndexTable">
-    <tbody>
-    @foreach (var forum in Model.ForumList)
-    {
-        <tr>
-            <td>
-                <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-                    @forum.Name
-                </a>
-            </td>
-            <td>
-                @forum.Description
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="row sectionHeader ">
+        <div class="sectionHeading text-bold">Browse Forums</div>
+        <div class="sectionDescription p-0">
+            <p>Welcome to <strong>Alpha Forum community</strong>. Post are broadly categorized into separate forums by programing language or area of interest</p>
+            
+        </div>
+    </div>
+    <div class="row" id="forumIndexContent">
+        <table class="table table-hover" id="forumIndexTable">
+            <tbody>
+            @foreach (var forum in Model.ForumList)
+            {
+                <tr>
+                    <td>
+                        <div class="forumLogo" style="background-image: url(@forum.ImageUrl)"></div>
+                        <div class="forumTitle">
+                            <a class="text-decoration-none" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+                                @forum.Name
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="forumPostCount">
+                            @forum.NumberOfPosts Posts
+                        </div>
+                        
+                        <div class="forumDescription">
+                            @forum.Description
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -2,7 +2,7 @@
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <span>@Model.Forum.Name Forum</span>
+        <span class="text-white-50" style="font-size: 20px">@Model.Forum.Name Forum</span>
         <div class="sectionHeading">
             @if (Context.User.Identity?.IsAuthenticated == true)
             {
@@ -35,7 +35,7 @@
                 <p>
                     <span>
                         You must be a
-                        <a asp-area="Identity" asp-page="/Account/Register">registered member</a>
+                        <a class="text-decoration-none" asp-area="Identity" asp-page="/Account/Register">registered member</a>
                         to create a new post.
                     </span>
                 </p>
@@ -54,12 +54,12 @@
                         <td>
                             <div class="postData">
                                 <div class="postTitle">
-                                    <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">@post.Title</a>
+                                    <a class="smFontSize text-decoration-none" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">@post.Title</a>
                                 </div>
                                 <div class="forumSubTitle">
-                                    <div>
+                                    <div class="smFontSize">
                                         <span class="postAuthor">
-                                            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
+                                            <a class="text-decoration-none" asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
                                                 @post.AuthorName
                                             </a>
                                         </span>
@@ -86,14 +86,6 @@
             <div class="noPosts">
                 <i class="material-icons md-72">question_answer</i>
             </div>
-            <h5>
-                Is looks like there are no posts to be found.
-                Why not
-                <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
-                    <span>Post</span>
-                </a>
-                Something?
-            </h5>
         }
         </div>
 </div>

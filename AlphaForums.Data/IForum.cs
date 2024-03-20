@@ -6,11 +6,12 @@ public interface IForum
 {
     Forum GetById(int id);
     IEnumerable<Forum> GetAll();
-    IEnumerable<ApplicationUser> GetAllActiveUsers();
 
     Task Create(Forum forum);
     Task Delete(int forumId);
+    Task UpdateForumImageUrl(int forumId, string url);
     Task UpdateForumTitle(int forumId, string newTitle);
     Task UpdateForumDescription(int forumId, string newDescription);
 
+    bool HasRecentPost(int forumId); 
 }
