@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6SHJ702eNU0IILSamdsK9BTfBQW/Ro0HOFnhdXqtbcs=",
+  "Hash": "zq+kehfhd5Rm/4i9ddp2elFTHoJTjetd1r0R7PApQSc=",
   "Source": "AlphaForums",
   "BasePath": "_content/AlphaForums",
   "Mode": "Default",
@@ -1537,6 +1537,25 @@
       "OriginalItemSpec": "wwwroot\\images\\forum\\forum_Typescript.png"
     },
     {
+      "Identity": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Vớvavớvẩna.png",
+      "SourceId": "AlphaForums",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\",
+      "BasePath": "_content/AlphaForums",
+      "RelativePath": "images/forum/forum_Vớvavớvẩna.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\forum\\forum_Vớvavớvẩna.png"
+    },
+    {
       "Identity": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\go.png",
       "SourceId": "AlphaForums",
       "SourceType": "Discovered",
@@ -1839,6 +1858,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png"
+    },
+    {
+      "Identity": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user7a171e19-efb5-4f19-a517-8a4a72f7eecf.png",
+      "SourceId": "AlphaForums",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\",
+      "BasePath": "_content/AlphaForums",
+      "RelativePath": "images/users/user7a171e19-efb5-4f19-a517-8a4a72f7eecf.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\users\\user7a171e19-efb5-4f19-a517-8a4a72f7eecf.png"
     },
     {
       "Identity": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\usera2e52e51-e51e-472a-bd87-ac0a28a0f113.png",

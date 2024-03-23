@@ -40,7 +40,7 @@ public class SearchController : Controller
         var postListings = posts.Select(post => new PostListingModel
         {
             Id = post.Id,
-            AuthorId = post.User.UserName,
+            AuthorId = post.User.Id,
             AuthorName = post.User.UserName,
             AuthorRating = post.User.Rating,
             Title = post.Title,

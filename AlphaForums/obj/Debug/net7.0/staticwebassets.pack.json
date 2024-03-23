@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\images\\forum\\forum_Typescript.png"
     },
     {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Vớvavớvẩna.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Vớvavớvẩna.png"
+    },
+    {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_basha.png",
       "PackagePath": "staticwebassets\\images\\forum\\forum_basha.png"
     },
@@ -143,6 +147,10 @@
     {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png",
       "PackagePath": "staticwebassets\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user7a171e19-efb5-4f19-a517-8a4a72f7eecf.png",
+      "PackagePath": "staticwebassets\\images\\users\\user7a171e19-efb5-4f19-a517-8a4a72f7eecf.png"
     },
     {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\usera2e52e51-e51e-472a-bd87-ac0a28a0f113.png",

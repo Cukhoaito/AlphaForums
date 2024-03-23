@@ -140,7 +140,7 @@ public class ForumController : Controller
         };
     }
 
-
+    [Authorize(Roles = "Admin")]
     public IActionResult Edit(int id)
     {
         var forum = _forumService.GetById(id);
@@ -154,7 +154,8 @@ public class ForumController : Controller
         };
         return View(model);
     }
-
+    
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         await _forumService.Delete(id);
@@ -162,9 +163,10 @@ public class ForumController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> EditForum(UpdateForumViewModel model)
     {
         await _forumService.UpdateForum(model.Id, model.Title, model.Description);
-        return RedirectToAction("Topic", "Forum", new { id = model.Id });
+        return RedirectToAction("Index", "Forum");
     }
 }

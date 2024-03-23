@@ -109,7 +109,7 @@ public class PostController : Controller
             Forum = forum
         };
     }
-
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         var post = _postService.GetById(id);
@@ -117,7 +117,7 @@ public class PostController : Controller
         await _postService.Delete(id);
         return RedirectToAction("Topic", "Forum", new { id = post.Forum.Id });
     }
-
+    [Authorize]
     public IActionResult Edit(int id)
     {
         var post = _postService.GetById(id);
@@ -136,6 +136,7 @@ public class PostController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> EditPost(UpdatePostModel model)
     {
         await _postService.EditPost(model.PostId, model.Title, model.Content);
