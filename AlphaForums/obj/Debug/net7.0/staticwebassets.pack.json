@@ -33,12 +33,52 @@
       "PackagePath": "staticwebassets\\images\\forum\\dart.png"
     },
     {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_C#a.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_C#a.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_C.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_C.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Dart.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Dart.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Javaa.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Javaa.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Javascripta.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Javascripta.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Kotlina.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Kotlina.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Pythona.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Pythona.png"
+    },
+    {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Rust.png",
       "PackagePath": "staticwebassets\\images\\forum\\forum_Rust.png"
     },
     {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Rusta.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_Rusta.png"
+    },
+    {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Typescript.png",
       "PackagePath": "staticwebassets\\images\\forum\\forum_Typescript.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_basha.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_basha.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_testa.png",
+      "PackagePath": "staticwebassets\\images\\forum\\forum_testa.png"
     },
     {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\go.png",
@@ -97,12 +137,20 @@
       "PackagePath": "staticwebassets\\images\\users\\user013300cb-1de5-48b5-bf67-a2561b250079.png"
     },
     {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user07927048-08e0-4458-b835-a1f1cac9dfa8.png",
+      "PackagePath": "staticwebassets\\images\\users\\user07927048-08e0-4458-b835-a1f1cac9dfa8.png"
+    },
+    {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png",
       "PackagePath": "staticwebassets\\images\\users\\user47a4e521-41ef-4226-aa5c-df918c447628.png"
     },
     {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\usera2e52e51-e51e-472a-bd87-ac0a28a0f113.png",
       "PackagePath": "staticwebassets\\images\\users\\usera2e52e51-e51e-472a-bd87-ac0a28a0f113.png"
+    },
+    {
+      "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\users\\userfc7cfed9-237e-481a-8200-6882bcf92fd1.png",
+      "PackagePath": "staticwebassets\\images\\users\\userfc7cfed9-237e-481a-8200-6882bcf92fd1.png"
     },
     {
       "Id": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\js\\site.js",

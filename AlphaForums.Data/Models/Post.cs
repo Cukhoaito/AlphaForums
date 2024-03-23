@@ -5,6 +5,8 @@ public class Post
     public int Id { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
+    
+    public bool Enable { get; set; } = true;
     public DateTime Created { get; set; }
     
     public virtual Forum Forum { get; set; }  

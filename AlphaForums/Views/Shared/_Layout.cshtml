@@ -11,6 +11,7 @@
     <title>@ViewData["Title"] - AlphaForums</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono">
 </head>
@@ -56,11 +57,8 @@
                                     <li role="separator" class="dropdown-divider"></li>
                                     <li class="dropdown-header">Admin</li>
                                     <li role="separator" class="dropdown-divider"></li>
-                                    <li >
-                                        <a class="dropdown-item" asp-controller="Forum" asp-action="Create">Create Forum</a>
-                                    </li>
                                     <li>
-                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Index">View Users</a>
+                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Index">Management Users</a>
                                     </li>
                                 }
                             </ul>

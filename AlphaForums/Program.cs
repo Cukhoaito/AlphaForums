@@ -4,7 +4,6 @@ using AlphaForums.Data.Models;
 using AlphaForums.Service;
 using Microsoft.AspNetCore.Identity;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

@@ -6,6 +6,7 @@ using AlphaForums.Models.ForumViewModels;
 using AlphaForums.Models.PostViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace AlphaForums.Controllers;
 
@@ -24,19 +25,20 @@ public class ForumController : Controller
     }
 
     [HttpGet]
-    public IActionResult Index()
+    public IActionResult Index(int? page, int? pageSize)
     {
+        page ??= 1;
+        pageSize ??= 6;
+        ViewBag.pageSize = pageSize;
         var forums = _forumService
             .GetAll()
             .Select(BuildForumListing);
+        var forumList = forums.OrderBy(f => f.Name)
+            .ToPagedList((int)page, (int)pageSize);
 
-        var model = new ForumIndexModel
-        {
-            ForumList = forums.OrderBy(f => f.Name)
-        };
-
-        return View(model);
+        return View(forumList);
     }
+
     [Authorize(Roles = "Admin")]
     public IActionResult Create()
     {
@@ -55,7 +57,7 @@ public class ForumController : Controller
         }
 
 
-        var fileName = Path.GetFileName("forum_" + Regex.Replace(model.Title, @"\s+", "") + ".png");
+        var fileName = Path.GetFileName("forum_" + Regex.Replace(model.Title, @"\s+", "") + "a.png");
         var fileSavePath = Path.Combine(uploadsFolder, fileName);
         await using (var stream = new FileStream(fileSavePath, FileMode.Create))
         {
@@ -74,15 +76,19 @@ public class ForumController : Controller
 
 
     [HttpGet]
-    public IActionResult Topic(int id, string query)
-    {
+    public IActionResult Topic(int id, string query, int? page, int? pageSize) 
+    { 
+        page ??= 1;
+        pageSize ??= 6;
+        ViewBag.query = query;
+        ViewBag.pageSize = pageSize;
         var forum = _forumService.GetById(id);
 
         var postListings = GetPostListingsForForum(forum, query);
 
         var model = new ForumTopicModel
         {
-            Posts = postListings,
+            Posts = postListings.ToPagedList((int)page, (int)pageSize),
             Forum = BuildForumListing(forum),
             SearchQuery = query
         };
@@ -98,8 +104,9 @@ public class ForumController : Controller
 
     private IEnumerable<PostListingModel> GetPostListingsForForum(Forum forum, string query)
     {
-        var posts = string.IsNullOrEmpty(query) ? forum.Posts : _postService.GetFilteredPosts(forum, query);
-
+        var posts = string.IsNullOrEmpty(query)
+            ? _postService.GetPostsByForum(forum)
+            : _postService.GetFilteredPosts(forum, query);
 
         return posts.Select(post => new PostListingModel
         {
@@ -128,8 +135,36 @@ public class ForumController : Controller
             Name = forum.Title,
             Description = forum.Description,
             ImageUrl = forum.ImageUrl,
-            NumberOfPosts = forum.Posts?.Count() ?? 0,
+            NumberOfPosts = forum.Posts?.Where(p => p.Enable == true).Count() ?? 0,
             HasRecentPost = _forumService.HasRecentPost(forum.Id)
         };
+    }
+
+
+    public IActionResult Edit(int id)
+    {
+        var forum = _forumService.GetById(id);
+        if (forum == null) return View("Error");
+        var model = new UpdateForumViewModel
+        {
+            Id = forum.Id,
+            Title = forum.Title,
+            Description = forum.Description,
+            ImageUrl = forum.ImageUrl
+        };
+        return View(model);
+    }
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _forumService.Delete(id);
+        return RedirectToAction("Index", "Forum");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditForum(UpdateForumViewModel model)
+    {
+        await _forumService.UpdateForum(model.Id, model.Title, model.Description);
+        return RedirectToAction("Topic", "Forum", new { id = model.Id });
     }
 }

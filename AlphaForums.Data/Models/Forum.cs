@@ -6,7 +6,7 @@ public class Forum
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime Created { get; set; }
+    public bool Enable { get; set; } = true;
     public string ImageUrl { get; set; }
-    
     public virtual IEnumerable<Post> Posts { get; set; }   
 }

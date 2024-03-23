@@ -1,0 +1,39 @@
+@model AlphaForums.Models.PostViewModels.UpdatePostModel
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading text-bold">
+            Edit Post | @Model.ForumName
+        </div>
+        <div class="flex mb-2 p-0">
+            <div class="forumLogo"
+                 style="background-image: url(@Model.ForumImageUrl)">
+            </div>
+            <span id="headingBtn">
+                <a asp-controller="Forum" asp-action="Topic"
+                   asp-route-id="@Model.ForumId" class="btn btn-back">
+                    Back to Forum
+                </a>
+            </span>
+        </div>
+
+    </div>
+    <div class="row">
+        <form asp-controller="Post" asp-action="EditPost" method="POST" id="addPostForm">
+            <div class="form-control rounded-0 border-0">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control rounded-0" value="@Model.Title"/>
+            </div>
+
+            <div class="form-control rounded-0 border-0">
+                <label asp-for="Content"></label>
+                <textarea rows="20" asp-for="Content" class="form-control rounded-0" value="@Model.Content"></textarea>
+            </div>
+            
+            <input asp-for="PostId" type="hidden"/>
+            <input asp-for="ForumId" type="hidden"/>
+            
+            <button type="submit" id="submitPostBtn" class="btn btn-submitPost">Save Post</button>
+        </form>
+    </div>
+
+</div>

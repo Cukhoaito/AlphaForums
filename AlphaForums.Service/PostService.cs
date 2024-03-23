@@ -16,12 +16,11 @@ public class PostService : IPost
     public Post GetById(int id)
     {
         return _context.Posts
-            .Where(post => post.Id == id)
             .Include(post => post.Forum)
             .Include(post => post.User)
             .Include(post => post.Relies)
             .ThenInclude(rely => rely.User)
-            .First();
+            .First(post => post.Id == id && post.Enable == true && post.Forum.Enable == true);
     }
 
     public IEnumerable<Post> GetAll()
@@ -30,17 +29,23 @@ public class PostService : IPost
             .Include(post => post.Forum)
             .Include(post => post.User)
             .Include(post => post.Relies)
-            .ThenInclude(rely => rely.User);
+            .ThenInclude(rely => rely.User)
+            .Where(p => p.Enable == true && p.Forum.Enable == true);
     }
 
     public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
     {
         return string.IsNullOrEmpty(searchQuery)
-            ? forum.Posts
-            : forum.Posts.Where(post
+            ? GetPostsByForum(forum)
+            : GetPostsByForum(forum).Where(post
                 => post.Title.ToLower().Contains(searchQuery.ToLower())
                    || post.Content.ToLower().Contains(searchQuery.ToLower())
             );
+    }
+
+    public IEnumerable<Post> GetPostsByForum(Forum forum)
+    {
+        return forum.Posts.Where(p => p.Enable == true);
     }
 
     public IEnumerable<Post> GetFilteredPosts(string searchQuery)
@@ -64,14 +69,21 @@ public class PostService : IPost
         await _context.SaveChangesAsync();
     }
 
-    public Task Delete(int id)
+    public async Task Delete(int id)
     {
-        throw new NotImplementedException();
+        var post = _context.Posts.FirstOrDefault(p => p.Id == id);
+        if(post == null) return;
+        post.Enable = false;
+        await _context.SaveChangesAsync();
     }
 
-    public Task EditPostContent(int id, string newContent)
+    public async Task EditPost(int id, string newTitle, string newContent)
     {
-        throw new NotImplementedException();
+        var post = GetById(id);
+        if (post == null) return;
+        post.Title = newTitle;
+        post.Content = newContent;
+        await _context.SaveChangesAsync();
     }
 
     public async Task AddReply(PostReply reply)

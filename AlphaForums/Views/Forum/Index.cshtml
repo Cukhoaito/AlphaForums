@@ -1,40 +1,99 @@
-@model AlphaForums.Models.ForumViewModels.ForumIndexModel
-
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IPagedList<AlphaForums.Models.ForumViewModels.ForumListingModel>
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="row sectionHeader ">
-        <div class="sectionHeading text-bold">Browse Forums</div>
+        <div class="sectionHeading">
+            <span class="postIndexTitle text-bold">
+                Browse Forums
+            </span>
+            @if (User.IsInRole("Admin"))
+            {
+                <span class="f-right ms-2">
+                    <a class="btn btn-delete " asp-controller="Forum" asp-action="Create">New Forum</a>
+                </span>
+            }
+
+        </div>
         <div class="sectionDescription p-0">
             <p>Welcome to <strong>Alpha Forum community</strong>. Post are broadly categorized into separate forums by programing language or area of interest</p>
-            
+
         </div>
     </div>
-    <div class="row" id="forumIndexContent">
-        <table class="table table-hover" id="forumIndexTable">
-            <tbody>
-            @foreach (var forum in Model.ForumList)
-            {
-                <tr>
-                    <td>
-                        <div class="forumLogo" style="background-image: url(@forum.ImageUrl)"></div>
-                        <div class="forumTitle">
-                            <a class="text-decoration-none" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-                                @forum.Name
-                            </a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="forumPostCount">
-                            @forum.NumberOfPosts Posts
-                        </div>
-                        
-                        <div class="forumDescription">
-                            @forum.Description
-                        </div>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
+    <div class="row position-relative" id="forumIndexContent">
+        @if (Model.Any())
+        {
+            <table class="table table-hover" id="forumIndexTable">
+                <tbody>
+                @foreach (var forum in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="forumLogo m-0" style="background-image: url(@forum.ImageUrl)"></div>
+                        </td>
+                        <td>
+                            <div >
+                                <a class="text-decoration-none text-bold" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+                                    @forum.Name
+                                </a>
+                                <span class="forumPostCount">(@forum.NumberOfPosts Posts)</span>
+                            </div>
+
+                            <div class="forumDescription description">
+                                @forum.Description
+                            </div>
+                        </td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <div class="height-44px d-flex align-items-center justify-content-end">
+                                    <a class="btn" asp-controller="Forum" asp-action="Edit" asp-route-id="@forum.Id">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="btn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal@(forum.Id)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="modal fade" id="confirmDeleteModal@(forum.Id)" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="confirmDeleteLabel">Confirm delete</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Do you want delete this forum?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <a class="btn btn-danger" asp-controller="Forum" asp-action="Delete" asp-route-id="@forum.Id">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <br/>
+
+            <div class="position-absolute bottom-0">
+                @Html.PagedListPager(Model, page =>
+                        Url.Action("Index", new { page, pageSize = ViewBag.pageSize }),
+                    new PagedListRenderOptions
+                    {
+                        LiElementClasses = new string[] { "page-item" },
+                        PageClasses = new string[] { "page-link" }
+                    }
+                )
+            </div>
+        }
+        
+
     </div>
 
 </div>

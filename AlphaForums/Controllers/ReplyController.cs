@@ -37,7 +37,7 @@ public class ReplyController : Controller
             AuthorName = User.Identity.Name,
             AuthorImageUrl = user.ProfileImageUrl,
             AuthorRating = user.Rating,
-            IsAuthorAdmin = User.IsInRole("Admin"),
+            IsAuthor = User.IsInRole("Admin"),
             
             ForumName = post.Forum.Title,
             ForumId = post.Forum.Id,

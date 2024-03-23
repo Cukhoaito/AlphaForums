@@ -1,3 +1,5 @@
+using X.PagedList;
+
 namespace AlphaForums.Models.PostViewModels;
 
 public class PostIndexModel
@@ -14,8 +16,8 @@ public class PostIndexModel
     public DateTime Created { get; set; }
     public string PostContent { get; set; }
     
-    public IEnumerable<PostRelyModel> Replies { get; set; }
+    public IPagedList<PostRelyModel> Replies { get; set; }
     public string ForumName { get; set; } 
     public int ForumId { get; set; }
-    public bool IsAuthorAdmin { get; set; }
+    public bool IsAuthor { get; set; }
 }

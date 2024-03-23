@@ -23,6 +23,16 @@ body {
     background-attachment: fixed;
     background-position: center;
 }
+.title {
+    color: whitesmoke;
+    font-weight: bold;
+}
+.height-40px{
+    height: 40px;
+}
+.f-right{
+    float: right;
+}
 .searchTitle{
     color: whitesmoke;
 }
@@ -257,7 +267,6 @@ body {
     text-decoration: none;
 }
 .replyBar{
-    margin-top: 10px;
     background-color: #017ab2;
     padding: 8px;
 }
@@ -286,7 +295,18 @@ body {
     padding: 10px;
     color: whitesmoke;
 }
-
+.btn-delete{
+    background-color: #c62828;
+    color: #fff !important;
+    transition: ease-in 0.3s;
+    border-radius: 0 !important;
+}
+.btn-edit{
+    background-color: #15c448;
+    color: #fff !important;
+    transition: ease-in 0.3s;
+    border-radius: 0 !important;
+}
 
 .btn-back {
     background-color: #206c95;
@@ -411,7 +431,12 @@ body {
 .my-font {
     font-family: 'Roboto', sans-serif;
 }
-
+.description {
+    width: 900px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
 .forumLogo {
     border-radius: 3px;
     float: left;
@@ -443,7 +468,12 @@ body {
 .noPosts {
     text-align: center;
     padding-top: 30px;
-    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+}
+.color-whitesmoke{
+    color: whitesmoke;
 }
 
 /*User Profile*/
@@ -485,6 +515,7 @@ body {
 .btn-browser{
     width: 200px;
 }
+.btn-close{}
 
 .createPostSection {
     background-color: #fff;
@@ -494,7 +525,10 @@ body {
 
 /*Forum Topic Page*/
 .searchBar{
-    padding: 3px 5px 2px 12px;
+    font-family: 'Roboto Mono',sans-serif;
+    font-size: 0.8em;
+    font-weight: bold; 
+    padding: 5px 5px 5px 12px;
     margin: 8px;
     background-color: #333;
     width: 30%;
@@ -513,6 +547,6 @@ body {
 .searchBar:-webkit-autofill,
 .searchBar:-webkit-autofill:hover,
 .searchBar:-webkit-autofill:focus {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', sans-serif;
    
 }

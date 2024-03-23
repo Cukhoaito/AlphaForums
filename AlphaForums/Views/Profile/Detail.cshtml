@@ -16,27 +16,29 @@
             {
                 <form method="POST" enctype="multipart/form-data"
                       asp-controller="Profile" asp-action="UploadProfileImage">
-                    <div id="upload">
-                        <label class="btn btn-default btn-file btn-browser">
-                            Browse <input type="file" name="file" style="display: none"/>
-                        </label>
-                    </div>
-                    <button type="submit" id="btn-profile" class="btn btn-default">
-                        Submit
+                    <input name="file" class="form-control w-50" type="file" id="formFile">
+                    <button type="submit" class="btn btn-success mt-2">
+                        Save
                     </button>
                 </form>
             }
         </div>
         <div class="col-md-8">
-            <span id="userName">@Model.UserName</span>
+            <span id="userName" class="text-bold">@Model.UserName</span>
             @if (@Model.IsAdmin)
             {
-                <span class="isAdmin">Admin</span>
+                <span class="isAdmin"><strong>Role: </strong>Admin</span>
             }
-            <span id="userRating">Current Rating: @Model.UserRating</span>
-            <span id="userEmailLabel">Email: @Model.Email</span>
-            <span id="userCreateLabel">Member Since: @Model.MemberSince</span>
-            
+            <span id="userRating">
+                <strong>Current Rating: </strong> @Model.UserRating
+            </span>
+            <span id="userEmailLabel">
+                <strong>Email: </strong> @Model.Email
+            </span>
+            @* <span id="userCreateLabel"> *@
+            @*     <strong>Member Since: </strong>@Model.MemberSince *@
+            @* </span> *@
+
         </div>
     </div>
 

@@ -9,6 +9,8 @@ public interface IForum
 
     Task Create(Forum forum);
     Task Delete(int forumId);
+    Task UpdateForum(int forumId, string title, string description);
+
     Task UpdateForumImageUrl(int forumId, string url);
     Task UpdateForumTitle(int forumId, string newTitle);
     Task UpdateForumDescription(int forumId, string newDescription);

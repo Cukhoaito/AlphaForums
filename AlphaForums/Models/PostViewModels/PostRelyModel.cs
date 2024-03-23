@@ -17,5 +17,5 @@ public class PostRelyModel
     public string ForumName { get; set; }
     public string ForumImageUrl { get; set; }
     public int ForumId { get; set; }
-    public bool IsAuthorAdmin { get; set; }
+    public bool IsAuthor { get; set; }
 }

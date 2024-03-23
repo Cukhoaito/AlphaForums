@@ -16,7 +16,7 @@ public class ForumService : IForum
     public Forum GetById(int id)
     {
         var forum = _context.Forums
-            .Where(forum => forum.Id == id)
+            .Where(forum => forum.Id == id && forum.Enable == true)
             .Include(forum => forum.Posts)
             .ThenInclude(post => post.User)
             .Include(forum => forum.Posts)
@@ -29,7 +29,7 @@ public class ForumService : IForum
     public IEnumerable<Forum> GetAll()
     {
         return _context.Forums
-            .Include(forum => forum.Posts);
+            .Include(forum => forum.Posts).Where(f => f.Enable == true);
     }
 
     
@@ -40,14 +40,26 @@ public class ForumService : IForum
         await _context.SaveChangesAsync();
     }
 
-    public Task Delete(int forumId)
+    public async Task Delete(int forumId)
     {
-        throw new NotImplementedException();
+        var forum = GetById(forumId);
+        if (forum==null) return;
+        forum.Enable = false;
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateForum(int forumId, string title, string description)
+    {
+        var forum = _context.Forums.First(f => f.Id == forumId && f.Enable == true);
+        if (forum == null) return;
+        forum.Title = title;
+        forum.Description = description;
+        await _context.SaveChangesAsync();
     }
 
     public async Task UpdateForumImageUrl(int forumId, string url)
     {
-        var forum = _context.Forums.First(f => f.Id == forumId);
+        var forum = _context.Forums.First(f => f.Id == forumId && f.Enable == true);
         if (forum == null) return;
         forum.ImageUrl = url;
         await _context.SaveChangesAsync();

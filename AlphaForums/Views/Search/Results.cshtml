@@ -2,17 +2,26 @@
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <span class="searchTitle">Search Results for: @Model.SearchQuery</span>
+        <span class="searchTitle text-bold">Search Results for: @Model.SearchQuery</span>
         <div class="sectionHeading">
 
-            <form asp-controller="Search" asp-action="Search" method="POST">
-                <div class="searchForm">
+            <form asp-controller="Search" asp-action="Search" method="POST" class="d-flex justify-content-between">
+                <div class="searchForm w-75">
                     <input name="query" type="text"
                            placeholder="Search..." class="searchBar"
                            value="@Model.SearchQuery"/>
                     <button type="submit" class="btn btn-search">
                         <i class="material-icons">search</i>
                     </button>
+                </div>
+                <div class="selectForm d-flex align-items-center">
+                    <label class="me-2 text-bold" style="font-size: 0.8em">Sort</label>
+                    <select name="sort" class="form-select" aria-label="selectSlotLabel">
+                        <option value="date_inc" selected="@("date_inc" == ViewBag.sort ? "selected" : null)">Date increasing</option>
+                        <option value="date_desc" selected="@("date_desc" == ViewBag.sort ? "selected" : null)">Date decreasing</option>
+                        <option value="replies_inc" selected="@("replies_inc" == ViewBag.sort ? "selected" : null)">Replies increasing</option>
+                        <option value="replies_desc" selected="@("replies_desc" == ViewBag.sort ? "selected":null)">Replies decreasing</option>
+                    </select>
                 </div>
             </form>
         </div>
@@ -65,8 +74,8 @@
             <div class="noPosts text-center">
                 <i class="material-icons md-72">question_answer</i>
             </div>
-            <h5>
-                No search results found for @Model.SearchQuery <br/>
+            <h5 class="text-center text-bold color-whitesmoke">
+                No search results found <br/>
             </h5>
         }
     </div>

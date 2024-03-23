@@ -4,6 +4,7 @@ using AlphaForums.Models.PostViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace AlphaForums.Controllers;
 
@@ -14,7 +15,8 @@ public class PostController : Controller
     private readonly IApplicationUser _userService;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
+    public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager,
+        IApplicationUser userService)
     {
         _postService = postService;
         _forumService = forumService;
@@ -23,8 +25,10 @@ public class PostController : Controller
     }
 
     [HttpGet]
-    public IActionResult Index(int id)
+    public IActionResult Index(int id, int? page, int? pageSize)
     {
+        page ??= 1;
+        pageSize ??= 5;
         var post = _postService.GetById(id);
         var replies = BuildPostReplies(post.Relies);
         var model = new PostIndexModel
@@ -37,10 +41,10 @@ public class PostController : Controller
             AuthorRating = post.User.Rating,
             Created = post.Created,
             PostContent = post.Content,
-            Replies = replies,
+            Replies = replies.ToPagedList((int)page, (int)pageSize),
             ForumId = post.Forum.Id,
             ForumName = post.Forum.Title,
-            IsAuthorAdmin = IsAuthorAdmin(post.User)
+            IsAuthor = IsAuthor(post.User)
         };
         return View(model);
     }
@@ -69,13 +73,13 @@ public class PostController : Controller
         if (user == null) return View("Error");
         var post = BuildPost(model, user);
         await _postService.Add(post);
-        await _userService.UpdateUserRating(user.Id,typeof(Post));
+        await _userService.UpdateUserRating(user.Id, typeof(Post));
         return RedirectToAction("Index", "Post", new { post.Id });
     }
 
-    private bool IsAuthorAdmin(ApplicationUser postUser)
+    private bool IsAuthor(ApplicationUser postUser)
     {
-        return _userManager.GetRolesAsync(postUser).Result.Contains("Admin");
+        return  _userManager.GetUserId(User) == postUser.Id;
     }
 
     private IEnumerable<PostRelyModel> BuildPostReplies(IEnumerable<PostReply> replies)
@@ -89,7 +93,7 @@ public class PostController : Controller
             AuthorRating = r.User.Rating,
             Created = r.Created,
             ReplyContent = r.Content,
-            IsAuthorAdmin = IsAuthorAdmin(r.User)
+            IsAuthor = IsAuthor(r.User)
         });
     }
 
@@ -104,5 +108,37 @@ public class PostController : Controller
             User = user,
             Forum = forum
         };
+    }
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        var post = _postService.GetById(id);
+        if (post == null) return View("Error");
+        await _postService.Delete(id);
+        return RedirectToAction("Topic", "Forum", new { id = post.Forum.Id });
+    }
+
+    public IActionResult Edit(int id)
+    {
+        var post = _postService.GetById(id);
+        if (post == null) return View("Error");
+        var model = new UpdatePostModel
+        {
+            PostId = post.Id,
+            ForumName = post.Forum.Title,
+            ForumId = post.Forum.Id,
+            ForumImageUrl = post.Forum.ImageUrl,
+            AuthorName = User.Identity?.Name ?? "Unknown",
+            Title = post.Title,
+            Content = post.Content
+        };
+        return View(model);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditPost(UpdatePostModel model)
+    {
+        await _postService.EditPost(model.PostId, model.Title, model.Content);
+        return RedirectToAction("Topic", "Forum", new { id = model.ForumId });
     }
 }

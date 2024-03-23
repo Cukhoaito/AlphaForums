@@ -30,7 +30,7 @@ public class HomeController : Controller
 
     private HomeIndexModel BuilderHomeIndexModel()
     {
-        var lastPosts = _postService.GetLastPosts(10);
+        var lastPosts = _postService.GetLastPosts(8);
         var posts = lastPosts.Select(post => new PostListingModel
         {
             Id = post.Id,
