@@ -76,12 +76,9 @@ public class ProfileController : Controller
         
         var fileName = Path.GetFileName("user"+userId + ".png");
         var fileSavePath = Path.Combine(uploadsFolder, fileName);
-        await using (var stream = new FileStream(fileSavePath, FileMode.Create))
-        {
-            await file.CopyToAsync(stream);
-            await _userService.SetProfileImage(userId, $"/images/users/{fileName}");
-        }
-        
+        await using var stream = new FileStream(fileSavePath, FileMode.Create);
+        await file.CopyToAsync(stream);
+        await _userService.SetProfileImage(userId, $"/images/users/{fileName}");
         return RedirectToAction("Detail", "Profile", new { id = userId });
     }
 }

@@ -39,7 +39,6 @@ public class PostService : IPost
             ? GetPostsByForum(forum)
             : GetPostsByForum(forum).Where(post
                 => post.Title.ToLower().Contains(searchQuery.ToLower())
-                   || post.Content.ToLower().Contains(searchQuery.ToLower())
             );
     }
 
@@ -54,7 +53,6 @@ public class PostService : IPost
             ? new List<Post>()
             : GetAll().Where(post
                 => post.Title.ToLower().Contains(searchQuery.ToLower())
-                   || post.Content.ToLower().Contains(searchQuery.ToLower())
             );
     }
 

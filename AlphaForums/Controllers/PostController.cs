@@ -140,6 +140,6 @@ public class PostController : Controller
     public async Task<IActionResult> EditPost(UpdatePostModel model)
     {
         await _postService.EditPost(model.PostId, model.Title, model.Content);
-        return RedirectToAction("Topic", "Forum", new { id = model.ForumId });
+        return RedirectToAction("Index", "Post", new { id = model.PostId });
     }
 }

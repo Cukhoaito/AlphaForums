@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zq+kehfhd5Rm/4i9ddp2elFTHoJTjetd1r0R7PApQSc=",
+  "Hash": "eFlP4GFzXruUk9eWT3tobLwHRLUeyAq/Ah0f51YMZXc=",
   "Source": "AlphaForums",
   "BasePath": "_content/AlphaForums",
   "Mode": "Default",
@@ -1535,6 +1535,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\forum\\forum_Typescript.png"
+    },
+    {
+      "Identity": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Typescripta.png",
+      "SourceId": "AlphaForums",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\",
+      "BasePath": "_content/AlphaForums",
+      "RelativePath": "images/forum/forum_Typescripta.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\forum\\forum_Typescripta.png"
     },
     {
       "Identity": "C:\\Users\\Bac\\Documents\\NetProjects\\AlphaForums\\AlphaForums\\wwwroot\\images\\forum\\forum_Vớvavớvẩna.png",

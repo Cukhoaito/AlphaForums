@@ -29,11 +29,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Do you want delete this forum?
+                                    Do you want delete this post?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a asp-controller="Post" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                                    <a asp-controller="Post" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>
